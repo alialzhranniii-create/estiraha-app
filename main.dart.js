@@ -41015,7 +41015,7 @@ m=p?j:new A.ak1(k,q)
 p=p?j:q.cx.length!==0
 l=t.p
 n=A.XU(A.c([A.ap4(j,j,new A.Ef(i.f,p===!0,B.L3,j),j,B.a7m,m,j,j,"\u062a\u0641\u0635\u064a\u0644 \u0627\u0644\u062c\u0648\u0644\u0629"),A.rk(B.a68,B.a7f,new A.ak2(a),j),B.fd],l),n,48)
-i=A.cq(A.c([A.cK(A.Zj(j,i.r.l8(0.16),!0)),A.cK(A.Zj(j,i.w.l8(0.16),!0))],l),B.N,B.x,B.C)
+i=A.cq(A.c([A.cK(A.Zj(j,i.r.l8(0.3),!0)),A.cK(A.Zj(j,i.w.l8(0.3),!0))],l),B.N,B.x,B.C)
 m=A.cq(A.c([A.cK(k.IQ(B.y,q)),B.fe,B.a_h,B.fe,A.cK(k.IQ(B.Z,q))],l),B.aj,B.x,B.C)
 p=A.c([],t.s)
 if(k.d==null)p.push("\u0627\u0644\u0646\u0648\u0639")
@@ -41272,9 +41272,9 @@ K(a){var s,r,q,p,o=this,n=null,m=t.q.a(A.T(a).c.i(0,A.aO(t.T)))
 m.toString
 s=o.c===B.y?m.r:m.w
 r=o.d
-q=r?s.l8(0.3):m.c
+q=r?s.l8(0.45):m.c
 m=A.eC(m.ay)
-p=r?s:s.l8(0.45)
+p=r?s:s.l8(0.6)
 r=r?2:1
 return A.hu(!1,B.Y,!0,n,A.n7(!1,n,!0,A.dG(new A.bB(B.nM,A.ke(o.w,n,n),n),o.r,n),n,!0,n,n,n,n,n,n,o.f,o.e,n,n,n),B.bo,q,0,n,n,new A.cg(m,new A.bq(p,r,B.G,-1)),n,n,B.b4)}}
 A.S3.prototype={
