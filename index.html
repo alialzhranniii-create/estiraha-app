@@ -32,8 +32,79 @@
 
   <title>ونيس</title>
   <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#12100B">
+  <style>
+    /* The night ground from the first instant: no white flash. */
+    html, body { margin: 0; background: #12100B; }
+    #splash {
+      position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 22px;
+      background: #12100B; transition: opacity .35s ease; z-index: 5;
+    }
+    #splash.gone { opacity: 0; pointer-events: none; }
+    /* A column of Sadu diamonds, the app's one motif. */
+    .sadu { display: flex; flex-direction: column; gap: 6px; }
+    .sadu i {
+      width: 14px; height: 14px; transform: rotate(45deg);
+      background: #EDCE67; opacity: .25; animation: glow 1.4s ease-in-out infinite;
+    }
+    .sadu i:nth-child(2) { animation-delay: .2s; }
+    .sadu i:nth-child(3) { animation-delay: .4s; }
+    .sadu i:nth-child(4) { animation-delay: .6s; }
+    @keyframes glow { 50% { opacity: 1; } }
+    #splash p {
+      margin: 0; color: #8F8C85; font: 15px/1.4 -apple-system, "SF Arabic", "Segoe UI", sans-serif;
+    }
+    #install {
+      position: fixed; top: env(safe-area-inset-top, 0px); inset-inline: 12px;
+      margin-top: 10px; padding: 12px 14px; display: none; align-items: center; gap: 10px;
+      background: #1F1A0E; border: 1px solid #3B3016; border-radius: 14px; z-index: 6;
+      color: #E8DCC0; font: 14px/1.5 -apple-system, "SF Arabic", "Segoe UI", sans-serif;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .45);
+    }
+    #install.shown { display: flex; }
+    #install b { color: #EDCE67; font-weight: 600; }
+    #install button {
+      margin-inline-start: auto; min-width: 44px; min-height: 44px; border: 0;
+      background: none; color: #8F8C85; font-size: 20px; cursor: pointer;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sadu i { animation: none; opacity: .8; }
+      #splash { transition: none; }
+    }
+  </style>
 </head>
 <body>
+  <div id="splash" aria-hidden="true">
+    <div class="sadu"><i></i><i></i><i></i><i></i></div>
+    <p>لحظات…</p>
+  </div>
+  <div id="install" role="note">
+    <span>ثبّته على شاشتك: اضغط <b>مشاركة</b> ثم <b>«إضافة إلى الشاشة الرئيسية»</b></span>
+    <button type="button" aria-label="إغلاق">✕</button>
+  </div>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var splash = document.getElementById('splash');
+      splash.classList.add('gone');
+      setTimeout(function () { splash.remove(); }, 400);
+
+      // Safari on iPhone only, when not opened from the home screen yet, and
+      // once dismissed never again.
+      var hint = document.getElementById('install');
+      var ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
+      var standalone = navigator.standalone === true ||
+          window.matchMedia('(display-mode: standalone)').matches;
+      var dismissed = false;
+      try { dismissed = localStorage.getItem('install-hint-dismissed') === '1'; } catch (e) {}
+      if (!ios || standalone || dismissed) { hint.remove(); return; }
+      setTimeout(function () { hint.classList.add('shown'); }, 1500);
+      hint.querySelector('button').addEventListener('click', function () {
+        hint.remove();
+        try { localStorage.setItem('install-hint-dismissed', '1'); } catch (e) {}
+      });
+    }, { once: true });
+  </script>
   <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader
