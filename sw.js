@@ -3,7 +3,7 @@
 // tool/pwa.dart at deploy time; this source copy is only the template.
 'use strict';
 
-const VERSION = '82afb3e2';
+const VERSION = 'f11a8cd8';
 const FILES = ['./', 'assets/AssetManifest.bin', 'assets/AssetManifest.bin.json', 'assets/FontManifest.json', 'assets/assets/fonts/OFL-ReadexPro.txt', 'assets/assets/fonts/OFL-ReemKufi.txt', 'assets/assets/fonts/ReadexPro-Variable.ttf', 'assets/assets/fonts/ReemKufi-Variable.ttf', 'assets/fonts/MaterialIcons-Regular.otf', 'assets/packages/wakelock_plus/assets/no_sleep.js', 'assets/shaders/ink_sparkle.frag', 'assets/shaders/stretch_effect.frag', 'canvaskit/canvaskit.js', 'canvaskit/canvaskit.wasm', 'favicon.png', 'flutter.js', 'flutter_bootstrap.js', 'icons/Icon-192.png', 'icons/Icon-512.png', 'icons/Icon-maskable-192.png', 'icons/Icon-maskable-512.png', 'index.html', 'main.dart.js', 'manifest.json', 'version.json'];
 const CACHE = 'app-' + VERSION;
 
